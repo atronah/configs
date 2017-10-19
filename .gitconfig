@@ -1,0 +1,78 @@
+[user]
+    name = atronah
+    email = atronah.ds@gmail.com
+
+[help]
+    format = html
+
+[core]
+    autocrlf = true
+    quotepath = false
+
+[i18n]
+    # для норм отображения в Vim выполнить set LANG=ru_RU.UTF-8 (или настроить переменные окружения)
+    #commitencoding = utf-8
+    #logoutputencoding = utf-8
+
+[pull]
+    ff = true
+    rebase = true
+
+[push]
+    default = simple
+    #ff = false
+
+[merge]
+    ff = false
+
+[credential]
+    helper = store
+
+[alias]
+    ; Simple shortcuts
+    a = add
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    rollback = checkout --
+    unstage = reset HEAD --
+    
+    ; Shortcuts
+    ap = add --path
+    be = branch --edit-description
+    ss = status --short --branch
+    un = reset HEAD --
+    fx = commit --fixup
+    sm = submodule
+    mr = merge --no-ff
+    
+    ; Log
+    ls = log --oneline
+    last = log -1 HEAD
+    hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    wdiff = diff --word-diff=color
+    ;;; format to html with link to commit (like "http://gitlab.com/{group}/{project}/%H")
+    html = log --pretty=format:'<h3>%ad <a href="http://gitlab.com/{group}/{project}/%H">%h</a> %s</h3>%n<pre>%b</pre>%n' --date=short --author=atronah
+    ;;; extended html with three arguments: date, group name, project name.
+    htmlex = "! f() { git html | sed -n -e \"/<h3>$1/,/<\\/pre>/ p\" | sed "s/{group}/$2/g" | sed "s/{project}/$3/g"; }; f"
+    
+    ; Workflow
+    get = !git pull --rebase && git submodule update --init --recursive
+    
+    ; Name
+    branch-name = rev-parse --abbrev-ref HEAD
+    upstream-name = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
+    
+    ; Topics
+    topic-start  = "!f(){ b=$1; git checkout master; git fetch; git rebase; git checkout -b "$b" master; };f"
+    topic-finish = "!f(){ b=$(git branch-name); git checkout master; git branch -d "$b"; git push origin ":$b"; };f"
+    
+    ; Other
+    it = "!git init && git commit -m “root” --allow-empty"
+    fxx = "!f() { git log -1 --format=format:%H -- "${GIT_PREFIX:-./}$1" | xargs -I {} git commit --fixup {} -- "${GIT_PREFIX:-./}$1" ; }; f"
+    
+    
+[gui]
+    encoding = utf-8
