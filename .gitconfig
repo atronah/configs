@@ -9,19 +9,24 @@
     #commitencoding = utf-8
     #logoutputencoding = utf-8
 
+
 [pull]
     ff = true
     rebase = true
+
 
 [push]
     default = simple
     #ff = false
 
+
 [merge]
     ff = false
 
+
 [credential]
     helper = store
+
 
 [alias]
     ; Simple shortcuts
@@ -32,7 +37,7 @@
     br = branch
     rollback = checkout --
     unstage = reset HEAD --
-    
+
     ; Shortcuts
     ap = add --path
     be = branch --edit-description
@@ -41,7 +46,7 @@
     fx = commit --fixup
     sm = submodule
     mr = merge --no-ff
-    
+
     ; Log
     ls = log --oneline
     last = log -1 HEAD
@@ -52,23 +57,23 @@
     html = log --pretty=format:'<h3>%ad <a href="http://gitlab.com/{group}/{project}/commit/%H">%h</a> %s</h3>%n<pre>%b</pre>%n' --date=short --author=atronah
     ;;; extended html with three arguments: date, group name, project name.
     htmlex = "! f() { git html | sed -n -e \"/<h3>$1/,/<\\/pre>/ p\" | sed "s/{group}/$2/g" | sed "s/{project}/$3/g"; }; f"
-    
+
     ; Workflow
     get = !git pull --rebase && git submodule update --init --recursive
-    
+
     ; Name
     branch-name = rev-parse --abbrev-ref HEAD
     upstream-name = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
-    
+
     ; Topics
     topic-start  = "!f(){ b=$1; git checkout master; git fetch; git rebase; git checkout -b "$b" master; };f"
     topic-finish = "!f(){ b=$(git branch-name); git checkout master; git branch -d "$b"; git push origin ":$b"; };f"
-    
+
     ; Other
     it = "!git init && git commit -m “root” --allow-empty"
     fxx = "!f() { git log -1 --format=format:%H -- "${GIT_PREFIX:-./}$1" | xargs -I {} git commit --fixup {} -- "${GIT_PREFIX:-./}$1" ; }; f"
-    
-    
+
+
 [gui]
     encoding = utf-8
 
