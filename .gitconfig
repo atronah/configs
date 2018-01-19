@@ -4,6 +4,8 @@
 [core]
     autocrlf = true
     quotepath = false
+    editor = vim
+
 
 [i18n]
     # для норм отображения в Vim выполнить set LANG=ru_RU.UTF-8 (или настроить переменные окружения)
