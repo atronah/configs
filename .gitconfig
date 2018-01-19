@@ -1,6 +1,3 @@
-[help]
-    format = html
-
 [core]
     autocrlf = true
     quotepath = false
