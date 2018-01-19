@@ -71,3 +71,7 @@
     
 [gui]
     encoding = utf-8
+
+
+[color]
+    ui = true
