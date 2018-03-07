@@ -32,7 +32,7 @@
     ; Simple shortcuts
     a = add
     st = status
-    ci = commit
+    ci = commit -v
     co = checkout
     br = branch
     rollback = checkout --
