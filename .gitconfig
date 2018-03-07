@@ -38,7 +38,7 @@
     rollback = checkout --
     unstage = reset HEAD --
 
-    ; Shortcuts
+    ; Shortcuts for extra behaviour
     ap = add --path
     be = branch --edit-description
     ss = status --short --branch
