@@ -33,6 +33,7 @@
     a = add
     st = status
     ci = commit -v
+    cp = cherry-pick
     co = checkout
     br = branch
     sm = submodule
