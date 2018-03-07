@@ -47,6 +47,7 @@
     un = reset HEAD --
     fx = commit --fixup
     mr = merge --no-ff
+    rba = rebase -i --autosquash
 
     ; Log
     ls = log --oneline
