@@ -59,6 +59,9 @@
     html = log --pretty=format:'<h3>%ad <a href="http://gitlab.com/{group}/{project}/commit/%H">%h</a> %s</h3>%n<pre>%b</pre>%n' --date=short --author=atronah
     ;;; extended html with three arguments: date, group name, project name.
     htmlex = "! f() { git html | sed -n -e \"/<h3>$1/,/<\\/pre>/ p\" | sed "s/{group}/$2/g" | sed "s/{project}/$3/g"; }; f"
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg = !"git lg1"
 
     ; Workflow
     get = !git pull --rebase && git submodule update --init --recursive
