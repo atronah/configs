@@ -26,8 +26,8 @@
     ff = false
 
 
-[credential]
-    helper = store
+#[credential]
+#    helper = store
 
 
 [alias]
