@@ -1,37 +1,43 @@
+[help]
+    ;; "info" - corresponds to -i|--info,
+    ;; "web" or "html" correspond to -w|--web.
+    ;; "man" corresponds to -m|--man,
+    ; format = html
+
 [core]
     autocrlf = true
+    ;; to prevent troubles with cyrillic in console (see https://habrahabr.ru/post/74839/)
     quotepath = false
     editor = vim
 
-
 [i18n]
-    # для норм отображения в Vim выполнить set LANG=ru_RU.UTF-8 (или настроить переменные окружения)
-    #commitencoding = utf-8
-    #logoutputencoding = utf-8
-
+    ;; NOTE: to make Vim display cyrillic correctly you have to set LANG=ru_RU.UTF-8
+    ;; no longer needed, becouse default settings work correct
+    ;commitencoding = utf-8
+    ;logoutputencoding = utf-8
 
 [pull]
+    ;; to prevent merge
     ff = true
-    # `rebase = true` приводит к тому, что локальный `merge` в ветку переделывается в последовательность аналогичных коммитов,
-    # даже если до `merge` локальная ветка соответствовала remote-версии
-    #rebase = true
-
+    ;; try to rebase your local changes on top of remote branch during pull.
+    ;; instead I prefer to use alias "pullr" (see bellow)
+    ;rebase = true
 
 [push]
     default = simple
-    #ff = false
-
+    ;; to prevent fast-forwarding during push
+    ;ff = false
 
 [merge]
+    ;; to prevent fast-forwarding during merge
     ff = false
 
-
-#[credential]
-#    helper = store
-
+[credential]
+    ;; to store your credentials into .git-credentials file
+    ;helper = store
 
 [alias]
-    ; Simple shortcuts
+    ;; Simple shortcuts
     a = add
     st = status
     ci = commit -v
@@ -42,16 +48,15 @@
     rollback = checkout --
     unstage = reset HEAD --
 
-    ; Shortcuts for extra behaviour
+    ;; Shortcuts for extra behaviour
     ap = add --path
     be = branch --edit-description
     ss = status --short --branch
     un = reset HEAD --
     fx = commit --fixup
     mr = merge --no-ff
-    rba = rebase -i --autosquash
 
-    ; Log
+    ;; Log
     ls = log --oneline
     last = log -1 HEAD
     hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
@@ -74,18 +79,18 @@
     ;;;   to insert into versioning info table
     sql-changelog = !"git log --date=format:'%d.%m.%Y' --format=format:\"select '%H' as sha%n        , '%cd' as released%n        , '%s. %b' as description%nfrom rdb\\$database union\" --first-parent $(git next $1)..HEAD"
 
-    ; Workflow
+    ;; Workflow
     get = !git pull --rebase && git submodule update --init --recursive
 
-    ; Name
+    ;; Name
     branch-name = rev-parse --abbrev-ref HEAD
     upstream-name = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
 
-    ; Topics
+    ;; Topics
     topic-start  = "!f(){ b=$1; git checkout master; git fetch; git rebase; git checkout -b "$b" master; };f"
     topic-finish = "!f(){ b=$(git branch-name); git checkout master; git branch -d "$b"; git push origin ":$b"; };f"
 
-    ; Other
+    ;; Other
     it = "!git init && git commit -m “root” --allow-empty"
     fxx = "!f() { git log -1 --format=format:%H -- "${GIT_PREFIX:-./}$1" | xargs -I {} git commit --fixup {} -- "${GIT_PREFIX:-./}$1" ; }; f"
 
