@@ -21,6 +21,7 @@
     ff = true
     ;; try to rebase your local changes on top of remote branch during pull.
     ;; instead I prefer to use alias "pullr" (see bellow)
+    ;; because it transforms local unpushed merge into set of commit
     ;rebase = true
 
 [push]
