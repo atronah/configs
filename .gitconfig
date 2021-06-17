@@ -1,3 +1,8 @@
+;; to add this config into yours without modification use
+;[include]
+;        path = /path/to/gitconfig
+;
+
 [help]
     ;; "info" - corresponds to -i|--info,
     ;; "web" or "html" correspond to -w|--web.
