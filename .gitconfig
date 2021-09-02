@@ -83,10 +83,10 @@
     next = !" f() { git log --reverse --ancestry-path --oneline --format=format:%H $1..HEAD | head -1; }; f"
     ;;; `changelog` shows all changes after specified commit/tag without merged branches details
     ;;;   for example `git changelog v1.2.3`
-    changelog = !"git log --format=format:'- %cs (%C(red)%H%C(reset), %C(dim white)@%an%C(reset)): %C(green)%s%C(reset). %b' --first-parent $(git next $1)..HEAD"
+    changelog = !"git log --format=format:'- %cs (%C(red)%H%C(reset), %C(dim white)@%an%C(reset)): %C(green)%s%C(reset). %b' --first-parent $1..HEAD"
     ;;; `sql-changelog` shows the same as `changelog` but in sql format to using in sql-projects
     ;;;   to insert into versioning info table
-    sql-changelog = !"git log --date=format:'%d.%m.%Y' --format=format:\"select '%H' as sha%n        , '%cd' as released%n        , '%s. %b' as description%nfrom rdb\\$database union\" --first-parent $(git next $1)..HEAD"
+    sql-changelog = !"git log --date=format:'%d.%m.%Y' --format=format:\"select '%H' as sha%n        , '%cd' as released%n        , '%s. %b' as description%nfrom rdb\\$database union\" --first-parent $1..HEAD"
 
     ;; Workflow
     get = !git pull --rebase && git submodule update --init --recursive
