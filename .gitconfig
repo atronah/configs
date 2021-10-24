@@ -102,6 +102,7 @@
     ;; Other
     it = "!git init && git commit -m “root” --allow-empty"
     fxx = "!f() { git log -1 --format=format:%H -- "${GIT_PREFIX:-./}$1" | xargs -I {} git commit --fixup {} -- "${GIT_PREFIX:-./}$1" ; }; f"
+    local-branches = "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'"
 
 
 [gui]
