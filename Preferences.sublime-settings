@@ -1,0 +1,22 @@
+{
+    "copy_with_empty_selection": false,
+    "default_encoding": "UTF-8",
+    "fallback_encoding": "Cyrillic (Windows 1251)",
+    "find_selected_text": true,
+    // "font_size": 11,
+    "ignored_packages":
+    [
+        "Markdown",
+        "Vintage",
+    ],
+    "open_files_in_new_window": false,
+    "show_full_path": true,
+    "theme": "Adaptive.sublime-theme",
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "show_encoding": true,
+    "mde.match_heading_hashes": false,
+    "color_scheme": "Mariana.sublime-color-scheme",
+    "font_size": 12,
+    "mde.list_indent_bullets": ["-"],
+}
