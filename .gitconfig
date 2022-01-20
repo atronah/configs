@@ -15,6 +15,11 @@
     quotepath = false
     editor = vim
 
+; to use for `docx` files add line `*.docx diff=pandoc` into `.gitattributes` file in directory with docx files
+[diff "pandoc"]
+textconv=pandoc --to=markdown
+prompt=false
+
 [i18n]
     ;; NOTE: to make Vim display cyrillic correctly you have to set LANG=ru_RU.UTF-8
     ;; no longer needed, becouse default settings work correct
