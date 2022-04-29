@@ -1,3 +1,4 @@
+// /Users/atronah/Library/Application Support/Sublime Text/Packages/User/Preferences.sublime-settings
 {
     "copy_with_empty_selection": false,
     "default_encoding": "UTF-8",
@@ -13,10 +14,13 @@
     "show_full_path": true,
     "theme": "Adaptive.sublime-theme",
     "translate_tabs_to_spaces": true,
-    "trim_trailing_white_space_on_save": true,
+    "trim_trailing_white_space_on_save": "all",
+    "trim_only_modified_white_space": false,
+    "ensure_newline_at_eof_on_save": true,
     "show_encoding": true,
     "mde.match_heading_hashes": false,
     "color_scheme": "Mariana.sublime-color-scheme",
-    "font_size": 12,
+    /*"font_size": 14,*/
     "mde.list_indent_bullets": ["-"],
+    // "enable_hexadecimal_encoding": true
 }
