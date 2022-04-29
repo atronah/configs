@@ -1,0 +1,4 @@
+// /Users/atronah/Library/Application Support/Sublime Text/Packages/User/Default (OSX).sublime-keymap
+[
+    { "keys": ["super+ctrl+0"], "command": "reset_font_size" },
+]
