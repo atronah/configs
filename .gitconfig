@@ -14,6 +14,8 @@
     ;; to prevent troubles with cyrillic in console (see https://habrahabr.ru/post/74839/)
     quotepath = false
     editor = vim
+    ;; https://www.git-tower.com/help/guides/faq-and-tips/faq/unicode-filenames/mac
+    precomposeunicode = true
 
 ; to use for `docx` files add line `*.docx diff=pandoc` into `.gitattributes` file in directory with docx files
 [diff "pandoc"]
