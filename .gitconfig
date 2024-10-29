@@ -88,9 +88,9 @@ prompt=false
     ;;; for example:
     ;;; > git otrslog eis 2023-03-09
     ;;; shows commits at 2023-03-09 with link to url http://gitlab.com/mplus/eis/commit/<sha>
-    otrslog = "! f() { git log --pretty=format:'<li>%ad <a href=\"http://gitlab.com/mplus/'$1'/commit/%H\">%h</a> %s%n<pre>%b</pre></li>' --date=short --author=$(git config user.name) --after=\"$2 00:00:00\" --before=\"$2 23:59:59\" | sed \"s/<pre>\\s*<\\/pre>//g\"; }; f"
+    otrslog = "! f() { git log --pretty=format:'<li>%ad <a href=\"'$(git link)'/commit/%H\">%h</a> %s%n<pre>%b</pre></li>' --date=short --author=$(git config user.name) --after=\"$1 00:00:00\" --before=\"$1 23:59:59\" | sed \"s/<pre>\\s*<\\/pre>//g\"; }; f"
     ;;; same to otrslog, but formated for redmine WikiFormat
-    redminelog = "! f() { git log --pretty=format:'* %ad \"%h\":http://gitlab.com/mplus/'$1'/commit/%H %s%n<pre>%b</pre>' --date=short --author=$(git config user.name) --after=\"$2 00:00:00\" --before=\"$2 23:59:59\" | sed \"s/<pre>\\s*<\\/pre>//g\"; }; f"
+    redminelog = "! f() { git log --pretty=format:'* %ad \"%h\":'$(git link)'/commit/%H %s%n<pre>%b</pre>' --date=short --author=$(git config user.name) --after=\"$1 00:00:00\" --before=\"$1 23:59:59\" | sed \"s/<pre>\\s*<\\/pre>//g\"; }; f"
     ;;; other formatting
     lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
     lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
