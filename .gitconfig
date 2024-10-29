@@ -78,6 +78,7 @@ prompt=false
     dump = cat-file -p
     pulr = pull --rebase
     wdiff = diff --word-diff=color
+    link = "!git remote get-url --push $(git remote | head -1) | sed 's/.git$//'"
     ;;; format to html with link to commit based on url from first argument
     ;;; (e.g. "http://gitlab.com/my_group/my_project/commit/")
     html = "! f() { git log --pretty=format:'<li>%ad <a href="$1/%H">%h</a> %s%n<pre>%b</pre></li>%n' --date=short --author=$(git config user.name) | sed \"s/<pre>\\s*<\\/pre>//g\"; }; f"
